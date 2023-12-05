@@ -1,0 +1,13 @@
+{
+  "name": "lamp",
+  "description": "Installs and configures LAMP stack -- apache, nginx, php, mysql",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[lamp]",
+    "role[proxy]"
+  ]
+}

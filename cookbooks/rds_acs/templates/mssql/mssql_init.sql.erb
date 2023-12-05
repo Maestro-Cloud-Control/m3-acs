@@ -1,0 +1,11 @@
+CREATE DATABASE [<%= @db_name %>];
+GO
+USE [<%= @db_name %>];
+GO
+CREATE SCHEMA [<%= @db_name %>];
+GO
+CREATE LOGIN <%= @db_username %> WITH PASSWORD = '<%= @db_userpass %>' ,DEFAULT_DATABASE = [<%= @db_name %>]
+GO
+CREATE USER <%= @db_username %> FOR LOGIN <%= @db_username %> WITH DEFAULT_SCHEMA = [<%= @db_name %>];
+EXEC sp_addrolemember 'db_owner','<%= @db_username %>'
+GO

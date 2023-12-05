@@ -1,0 +1,20 @@
+{
+  "name": "mongodb_secondary",
+  "description": "A role to configure mongodb secondary node",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "mongodb": {
+      "cluster_name": "MyCluster"
+    }
+  },
+  "override_attributes": {
+    "mongodb": {
+      "replica_arbiter_only": false
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[mongodb_replicaset::default]"
+  ],
+  "env_run_lists": {}
+}

@@ -1,0 +1,37 @@
+<%= @version_string %>
+
+# Define TCP syslog destination.
+destination d_net {
+    syslog("<%= @graylog_server_name %>" port(514));
+};
+
+source s_src{
+    unix-dgram("/dev/log");
+    file("/proc/kmsg");
+    internal();
+};
+
+<% if @logs %>
+<% @logs.split("+").each do |log| %>
+source <%= log.split('/')[-1].gsub('.', '_') %> {
+    file("<%= log %>" follow-freq(1));
+}; 
+
+<% end %>
+<% end %>
+
+# Tell syslog-ng to send data from source s_src to the newly defined syslog destination.
+log {
+    source(s_src); # Defined in the default syslog-ng configuration.
+    destination(d_net);
+};
+
+<% if @logs %>
+<% @logs.split("+").each do |log| %>
+log {
+    source(<%= log.split('/')[-1].gsub('.', '_') %>);
+    destination(d_net);
+};
+
+<% end %>
+<% end %>

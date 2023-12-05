@@ -1,0 +1,11 @@
+name             'proxy'
+maintainer       ''
+maintainer_email ''
+license          'All Rights Reserved'
+description      'Installs/Configures proxy'
+version          '0.4.0'
+chef_version     '>= 14.0'
+
+depends 'ssl_certificate', '~> 2.3.0'
+depends 'nginx-proxy', '~> 0.3.1'
+depends 'nginx', '~> 9.0.0'

@@ -1,0 +1,65 @@
+module EpHandler
+  class LastRun < Chef::Handler
+    def report
+      force_run_needed = node['force_run_needed']
+
+      node.rm('force_run_needed')
+      node['metadata'].keys.each { |key| node.rm('metadata', key) }
+      node.save
+
+      case node['os']
+      when 'linux'
+        lock_file = '/etc/chef/.chef_started'
+      when 'windows'
+        lock_file = 'C:/chef/.chef_started'
+      end
+
+      ::File.delete(lock_file) if ::File.exist?(lock_file)
+
+      if success?
+        node.override['lastrun']['state'] = 'success'
+        node.override['lastrun']['backtrace'] = 'none'
+      else
+        node.override['lastrun']['state'] = 'failed'
+        node.override['lastrun']['backtrace'] = run_status.formatted_exception
+      end
+
+      # Send result to Orchestrator
+      chefserver = URI.parse(Chef::Config.chef_server_url)
+      node_status = JSON.parse(node['epc_out'].to_json)
+      
+      Chef::Log.info("<%= @lastrun_url %>")
+
+      begin
+        uri = URI.parse("<%= @lastrun_url %>")
+        http = Net::HTTP.new(uri.host, uri.port)
+        proto = "<%= @lastrun_url %>".split(':', 2)
+
+        if proto[0] == 'https'
+          http.use_ssl = true
+          http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+        end
+
+        http.open_timeout = 25
+        http.read_timeout = 25
+        # TODO: refactor request building
+        request = Net::HTTP::Post.new("<%= @lastrun_url %>")
+        some_magic = JSON.parse(node['epc_out'].to_json)
+        magick_string = "name=" + node['name'] + "&state=" + node['lastrun']['state']  + "&chefserver=" + chefserver.host + "&node_data={" + "\"name\":\"" + node['name'] + "\",\"state\":\"" + node['lastrun']['state'] + "\",\"chefserver\":\"" + chefserver.host + "\",\"node_roles\":" + "[\"" + "#{node['roles'].join('","')}" + "\"]" + ",\"node_status\":" + some_magic.inspect.gsub('=>',':') + "}"
+        request.body = magick_string
+        Chef::Log.info("Sending data: #{magick_string}.")
+        result = http.request(request)
+        Chef::Log.info("Lastrun report was sent to Orchestrator: response code #{result.code}")
+      rescue StandardError => e
+        Chef::Log.info("Couldn't send lastrun data by URL: #{"<%= @lastrun_url %>"}, #{e}")
+        Chef::Log.info(">>>>>>>>> #{magick_string}")
+      end
+
+      if force_run_needed
+        Chef::Log.info('Invoking rerun for chef client')
+        spawn(node['chef_client_path'] + ' --once')
+      end
+
+    end
+  end
+end

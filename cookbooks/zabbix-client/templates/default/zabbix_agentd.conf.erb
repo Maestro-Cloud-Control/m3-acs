@@ -1,0 +1,9 @@
+Hostname=<%= node['zabbix-client']['zabbix_hostname'] %>
+LogFile=<%= node['zabbix-client']['log_dir'] %>/zabbix_agentd.log
+DebugLevel=3
+EnableRemoteCommands=1
+LogRemoteCommands=1
+Include=<%= node['zabbix-client']['include_dir'] %>
+PidFile=<%= node['zabbix-client']['run_dir'] %>/zabbix_agentd.pid
+Server=<%= node['zabbix-client']['zabbix-server'] %>
+StartAgents=1

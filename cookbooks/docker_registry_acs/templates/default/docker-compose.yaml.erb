@@ -1,0 +1,30 @@
+version: '2'
+services:
+
+#Registry
+  registry:
+    image: registry:2
+    restart: always
+    ports:
+    - "5000:5000"
+    environment:
+      REGISTRY_AUTH: htpasswd
+      REGISTRY_AUTH_HTPASSWD_REALM: Registry-Realm
+      REGISTRY_AUTH_HTPASSWD_PATH: /conf/registry.htpasswd
+      REGISTRY_HTTP_TLS_CERTIFICATE: /conf/docker.crt
+      REGISTRY_HTTP_TLS_KEY: /conf/docker.key
+      REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /data
+    volumes:
+      - registrydata:/data
+      - ./conf:/conf
+    networks:
+      - mynet
+
+#Docker Networks
+networks:
+  mynet:
+    driver: bridge
+#Volumes
+volumes:
+  registrydata:
+    driver: local

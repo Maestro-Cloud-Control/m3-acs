@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<security version="v8">
+  <users>
+    <user>
+      <username>admin</username>
+      <password><%= @admin_crypted_pass %></password>
+      <salt><%= @admin_salt %></salt>
+      <admin>true</admin>
+      <enabled>true</enabled>
+      <updatableProfile>true</updatableProfile>
+      <accountNonExpired>true</accountNonExpired>
+      <credentialsExpired>false</credentialsExpired>
+      <credentialsNonExpired>true</credentialsNonExpired>
+      <accountNonLocked>true</accountNonLocked>
+      <realm>internal</realm>
+      <transientUser>false</transientUser>
+      <groups/>
+      <userPropertyInfos>
+        <userProperty>
+          <propKey>passwordCreated</propKey>
+          <propValue><%= Time.now.to_i %></propValue>
+        </userProperty>
+      </userPropertyInfos>
+      <lastAccessTimeMillis>0</lastAccessTimeMillis>
+      <locked>false</locked>
+    </user>
+  </users>
+</security>

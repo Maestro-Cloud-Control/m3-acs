@@ -1,0 +1,17 @@
+{
+  "name": "gerrit",
+  "description": "Role for gerrit which also includes nginx proxy with self signed ssl sertificate",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[gerrit_acs]"
+  ],
+  "env_run_lists": {
+
+  }
+}

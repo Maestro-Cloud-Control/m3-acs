@@ -1,0 +1,17 @@
+{
+  "name": "chef-epc",
+  "description": "Chef server in EPC mode",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "chef_epc"
+  ],
+  "env_run_lists": {
+  }
+}
+  

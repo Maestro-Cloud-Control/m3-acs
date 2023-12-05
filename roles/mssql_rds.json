@@ -1,0 +1,19 @@
+{
+    "name": "mssql_rds",
+    "description": "",
+    "json_class": "Chef::Role",
+    "default_attributes": {
+        "rds_acs": {
+            "installation_type": "mssql"
+        }
+    },
+    "override_attributes": {
+    },
+    "chef_type": "role",
+    "run_list": [
+        "recipe[rds_acs]"
+    ],
+    "env_run_lists": {
+    }
+}
+  

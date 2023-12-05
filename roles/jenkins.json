@@ -1,0 +1,17 @@
+{
+  "name": "jenkins",
+  "description": "Role for jenkins service installation",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[jenkins_acs]",
+    "role[proxy]"
+  ],
+  "env_run_lists": {
+
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "replica",
+  "root_password": "slave_root_password",
+  "server_id": "20",
+  "replication_user": "replica_user",
+  "replication_password": "replica_password",
+  "primary_dns": ""
+}

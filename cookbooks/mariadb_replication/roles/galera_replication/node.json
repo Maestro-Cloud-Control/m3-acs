@@ -1,0 +1,18 @@
+{
+  "name": "mariadb_galera_node",
+  "description": "The role for systems that are MariaDB Galera Cluster node",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+ 
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[mariadb_replication::install_galera_replication]"
+  ],
+  "env_run_lists": {
+
+  }
+}

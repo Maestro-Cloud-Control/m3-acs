@@ -1,0 +1,4 @@
+ALTER USER postgres PASSWORD '<%= @db_rootpass %>';
+CREATE DATABASE "<%= @db_name %>";
+CREATE USER "<%= @db_username %>" WITH PASSWORD '<%= @db_userpass %>';
+GRANT ALL PRIVILEGES ON DATABASE "<%= @db_name %>" TO "<%= @db_username %>";

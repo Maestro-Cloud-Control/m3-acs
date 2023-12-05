@@ -1,0 +1,11 @@
+<?php
+session_start();
+
+$conn = mysqli_connect(
+  '<%= @host %>',
+  '<%= @user %>',
+  '<%= @password %>',
+  '<%= @db_name %>'
+) or die(mysqli_error($mysqli));
+
+?>

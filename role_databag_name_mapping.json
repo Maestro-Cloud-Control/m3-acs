@@ -1,0 +1,8 @@
+{
+  "postgresql_rds": "rdb",
+  "mysql_rds": "rdb",
+  "mariadb_rds": "rdb",
+  "sonar_acs": "sonar",
+  "graylog": "graylog_server",
+  "gerrit_acs": "gerrit"
+}

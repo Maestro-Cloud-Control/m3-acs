@@ -1,0 +1,4 @@
+# TYPE    DATABASE            USER                    ADDRESS                 METHOD
+local     all                 postgres                                        md5
+local      <%= @db_name %>     <%= @db_username %>                            md5
+host      <%= @db_name %>     <%= @db_username %>     127.0.0.0/24             md5

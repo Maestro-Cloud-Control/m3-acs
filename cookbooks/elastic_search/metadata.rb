@@ -1,0 +1,10 @@
+name 'elastic_search'
+maintainer ''
+maintainer_email ''
+license 'All Rights Reserved'
+description 'Installs/Configures elastic_search'
+long_description 'Installs/Configures elastic_search'
+version '0.1.0'
+chef_version '>= 13.0'
+
+depends 'elasticsearch', '~> 5.1.3'

@@ -1,0 +1,6 @@
+name             'chef-remove'
+maintainer       ''
+maintainer_email ''
+license          'All rights reserved'
+description      'Removes chef client'
+version          '0.3.0'

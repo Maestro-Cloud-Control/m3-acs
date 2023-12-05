@@ -1,0 +1,22 @@
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=forking
+
+User=<%= @service_user %>
+Group=<%= @service_group %>
+EnvironmentFile=/etc/default/gerritcodereview
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=gerrit
+ExecStart=<%= @gerrit_sh %> start
+ExecStop=<%= @gerrit_sh %> stop
+PIDFile=<%= @gerrit_pid_file %>
+
+LimitNOFILE=65536
+LimitNPROC=8192
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

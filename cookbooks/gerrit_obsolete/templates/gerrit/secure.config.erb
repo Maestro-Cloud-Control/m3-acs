@@ -1,0 +1,13 @@
+[ldap]
+  server = <%= @server %>
+  username = <%= @user %>
+  password = <%= @password %>
+
+<%- unless node['metadata']['gerrit']['mail_user'].nil? %>
+[sendemail]
+  enable = true
+  smtpServer = <%= node['metadata']['gerrit']['mail_server'] %>
+  smtpUser = <%= node['metadata']['gerrit']['mail_user'] %>
+  smtpPass = <%= node['metadata']['gerrit']['mail_password'] %>
+  from = <%= node['metadata']['gerrit']['mail_user'] %>
+<% end %>

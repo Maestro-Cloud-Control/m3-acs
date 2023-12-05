@@ -1,0 +1,11 @@
+name             'gerrit_acs'
+maintainer       ''
+maintainer_email ''
+license          'All rights reserved'
+description      'Installs/Configures gerrit'
+version          '0.4.1'
+chef_version     '>= 13.0'
+
+depends          'corretto-java'
+depends          'git', '~> 10.1.0'
+depends          'ssh_keygen', '~> 1.1.0'

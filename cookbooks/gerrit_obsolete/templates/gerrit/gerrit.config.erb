@@ -1,0 +1,28 @@
+[gerrit]
+  basePath = <%= node['gerrit']['home_dir'] %>/git
+  canonicalWebUrl = http://<%= node['fqdn'] %>:<%= node['gerrit']['httpd']['listen_port'] %>/
+[auth]
+  type = <%= node['gerrit']['auth']['type'] %>
+[receive]
+  enableSignedPush = false
+[container]
+  user = <%= node['gerrit']['username'] %>
+  javaHome = <%= @javahome %>
+[sshd]
+  listenAddress = *:29418
+[httpd]
+  listenUrl = <%= node['gerrit']['httpd']['listen_url'] %>
+[plugins]
+  allowRemoteAdmin = true
+[cache]
+  directory = cache
+<%- if node['gerrit']['auth']['type'] == "LDAP" %>
+[ldap]
+  sslVerify = false
+  accountBase = DC=,DC=com
+  accountPattern = (userprincipalname=${username})
+  accountFullName = displayName
+  accountEmailAddress = mail
+  groupBase = DC=,DC=com
+<% end %>
+

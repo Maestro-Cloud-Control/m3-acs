@@ -1,0 +1,13 @@
+name 'lamp'
+maintainer ''
+maintainer_email ''
+license 'All Rights Reserved'
+description 'Installs/Configures lamp stack'
+long_description 'Installs/Configures lamp stack'
+version '0.1.1'
+chef_version '>= 13.0'
+
+depends 'mysql', '~> 11.1.0'
+depends 'apache2', '~> 9.0.3'
+depends 'php', '~> 9.2.13'
+depends 'git'

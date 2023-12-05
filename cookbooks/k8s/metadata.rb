@@ -1,0 +1,10 @@
+name 'k8s'
+maintainer ''
+maintainer_email ''
+license 'All Rights Reserved'
+description 'Installs/Configures k8s'
+long_description 'Installs/Configures k8s'
+version '0.1.0'
+chef_version '>= 13.0'
+
+depends 'ssh_keygen', '~> 1.1.0'

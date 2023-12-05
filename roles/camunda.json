@@ -1,0 +1,13 @@
+{
+  "name": "camunda",
+  "description": "Installs and configures camunda",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[camunda]",
+    "role[proxy]"
+  ]
+}

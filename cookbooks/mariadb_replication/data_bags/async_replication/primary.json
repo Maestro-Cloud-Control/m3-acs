@@ -1,0 +1,7 @@
+{
+  "id": "primary",
+  "root_password": "some_root_password",
+  "server_id": "10",
+  "replication_user": "replica_user",
+  "replication_password": "replica_password"
+}

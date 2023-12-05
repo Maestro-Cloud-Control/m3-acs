@@ -1,0 +1,16 @@
+{
+  "name": "k8s_master",
+  "description": "A role to configure k8s master node",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[k8s::k8s_master]"
+  ],
+  "env_run_lists": {}
+}

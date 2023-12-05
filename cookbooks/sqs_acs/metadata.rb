@@ -1,0 +1,10 @@
+name             'sqs_acs'
+maintainer       ''
+maintainer_email ''
+license          'All Rights Reserved'
+description      'Installs/Configures sqs_acs'
+version          '0.4.2'
+chef_version     '>= 14.0'
+
+depends 'rabbitmq', '~> 5.8.5'
+depends 'corretto-java'

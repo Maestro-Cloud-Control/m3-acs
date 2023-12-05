@@ -1,0 +1,1 @@
+default['nginx_balancer']['timestamp_old'] = nil

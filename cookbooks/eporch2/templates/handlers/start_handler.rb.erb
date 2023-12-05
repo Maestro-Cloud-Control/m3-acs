@@ -1,0 +1,42 @@
+require 'chef/handler'
+class Chef
+  class EpHandler
+    class StartHandler < Chef::Handler
+      def report
+        case node['os']
+        when 'linux'
+          lock_file = '/etc/chef/.chef_started'
+        when 'windows'
+          lock_file = 'C:/chef/.chef_started'
+        end
+
+        unless ::File.exist?(lock_file)
+          
+          Chef::Log.info(">> Chef run begin: #{"<%= @startrun_url %>"}")
+          begin
+            uri = URI.parse("<%= @startrun_url %>")
+            http = Net::HTTP.new(uri.host, uri.port)
+            # proto = "<%= @startrun_url %>".split(':', 2)
+            if uri.scheme == 'https'
+              http.use_ssl = true
+              http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+            end
+            http.open_timeout = 5
+            http.read_timeout = 5
+            request = Net::HTTP::Post.new("<%= @startrun_url %>")
+            request.body = 'name=' + node.name + '&state=started&node_data={\'node_roles\':[\'' + node['roles'].join(',') + '\']}'
+            Chef::Log.info('Request body is: ' + request.body)
+            result = http.request(request)
+            if result.code == '200'
+              lf = ::File.open(lock_file, 'w')
+              lf.close
+            end
+            Chef::Log.info("Startrun report was sent to Orchestrator: response code #{result.code}")
+          rescue StandardError => e
+            Chef::Log.info("Couldn`t send startrun data by URL: #{"<%= @startrun_url %>"}, #{e}")
+          end
+        end
+      end
+    end
+  end
+end

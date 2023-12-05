@@ -1,0 +1,3 @@
+## Elasticsearch is a distributed search and analytics engine built on Apache Lucene.
+
+`Elasticsearch is a distributed search and analytics engine built on Apache Lucene. Since its release in 2010, Elasticsearch has quickly become the most popular search engine and is commonly used for log analytics, full-text search, security intelligence, business analytics, and operational intelligence use cases.`

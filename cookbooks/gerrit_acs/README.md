@@ -1,0 +1,3 @@
+## Gerrit is a web based code review tool which is integrated with Git and built on top of Git version control system (helps developers to work together and maintain the history of their work). It allows to merge changes to Git repository when you are done with the code reviews. 
+
+`Gerrit provides two parameters namely code-review and which reviewers need to score and it determines the state of the pull request. On the other hand, at GitHub and GitLab, one need to arrive at the conclusion by going through the discussion and may add a tag to reflect the status.`

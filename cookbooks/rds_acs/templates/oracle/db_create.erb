@@ -1,0 +1,18 @@
+responseFileVersion=/oracle/assistants/rspfmt_dbca_response_schema_v19.0.0
+gdbName=<%= "#{node.run_state['db_name']}.#{node['fqdn']}" %>
+sid=<%= node.run_state['db_name'] %>
+createAsContainerDatabase=false
+numberOfPDBs=1
+pdbName=<%= node.run_state['db_name'] %>
+pdbAdminPassword=Qwe123123
+templateName=General_Purpose.dbc
+sysPassword=Qwe123123
+systemPassword=Qwe123123
+emConfiguration=NONE
+emExpressPort=5500
+dbsnmpPassword=NONE
+characterSet=<%= node["rds_acs"]["db_characterset"] %>
+nationalCharacterSet=AL16UTF16
+initParams=audit_trail=none,audit_sys_operations=false
+automaticMemoryManagement=FALSE
+totalMemory=2048

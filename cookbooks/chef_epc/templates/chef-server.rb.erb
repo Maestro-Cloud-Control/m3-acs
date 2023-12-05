@@ -1,0 +1,5 @@
+api_fqdn "<%= @api_fqdn %>"
+nginx['ssl_certificate'] = "<%= @path_to_ssl_certificate %>"
+nginx['ssl_certificate_key'] = "<%= @path_to_ssl_certificate_key %>"
+nginx['ssl_protocols'] = "TLSv1.2"
+addons['install'] = false

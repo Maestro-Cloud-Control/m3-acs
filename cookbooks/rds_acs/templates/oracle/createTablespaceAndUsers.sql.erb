@@ -1,0 +1,10 @@
+declare
+userexist integer;
+begin
+  select count(*) into userexist from dba_users where username='<%= @prod_user.upcase %>';
+  if (userexist = 0) then
+    execute immediate 'create user "<%= @prod_user.upcase %>" identified by "<%= @prod_passwd %>"';
+    execute immediate 'grant dba to "<%= @prod_user.upcase %>"';
+  end if;
+end;
+/

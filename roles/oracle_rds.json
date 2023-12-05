@@ -1,0 +1,20 @@
+{
+    "name": "oracle_rds",
+    "description": "oracle for RDS service",
+    "json_class": "Chef::Role",
+    "default_attributes": {
+        "rds_acs": {
+            "installation_type": "oracle"
+        }
+    },  
+    "override_attributes": {
+
+    },  
+    "chef_type": "role",
+    "run_list": [
+        "recipe[rds_acs]"
+    ],  
+    "env_run_lists": {
+
+    }
+}

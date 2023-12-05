@@ -1,0 +1,21 @@
+[global]
+# specify cluster network for monitoring
+cluster network = <%= @ceph_network_cidr %>
+# specify public network
+public network =  <%= @ceph_network_cidr %>
+# specify UUID genarated above
+fsid =  <%= @ceph_fsid %>
+# specify IP address of Monitor Daemon
+mon host = <%= @ip %>
+# specify Hostname of Monitor Daemon
+mon initial members = <%= @hostname %>
+osd pool default crush rule = -1
+  
+# mon.(Node name)
+[mon.<%= @hostname %>]
+# specify Hostname of Monitor Daemon
+host = <%= @hostname %>
+# specify IP address of Monitor Daemon
+mon addr = <%= @ip %>
+# allow to delete pools
+mon allow pool delete = true

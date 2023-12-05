@@ -1,0 +1,3 @@
+## JFrog Artifactory is a universal DevOps solution that manages and automates artifacts and binaries from start to finish during the application delivery process.
+
+`Artifactory offers a solution for managing and distributing software binaries and artifacts – such as application packages and installers, container images, libraries, configuration files and virtually any other type of binary data that is produced during the software development and delivery process.`

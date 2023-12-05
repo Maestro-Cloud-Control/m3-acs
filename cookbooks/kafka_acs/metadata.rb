@@ -1,0 +1,11 @@
+name 'kafka_acs'
+maintainer ''
+maintainer_email ''
+license 'All Rights Reserved'
+description 'Installs/Configures kafka_acs'
+long_description 'Installs/Configures kafka_acs'
+version '0.1.0'
+chef_version '>= 13.0'
+
+depends 'kafka', '~> 3.1.16'
+depends 'corretto-java'

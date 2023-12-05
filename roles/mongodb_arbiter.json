@@ -1,0 +1,21 @@
+{
+  "name": "mongodb_arbiter",
+  "description": "A role to configure mongodb arbiter node",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "mongodb": {
+      "cluster_name": "MyClaster"
+    }
+  },
+  "override_attributes": {
+    "mongodb": {
+      "replica_arbiter_only": true
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[mongodb_replicaset::default]"
+  ],
+  "env_run_lists": {
+  }
+}

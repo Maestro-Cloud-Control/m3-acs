@@ -1,0 +1,6 @@
+default['rds_acs']['base_dir'] = '/u01/app/oracle'
+default['rds_acs']['db_characterset'] = 'AL32UTF8'
+default['rds_acs']['oinventory_dir'] = '/u01/app/oraInventory'
+default['rds_acs']['oracle_checksum'] = 'ba8329c757133da313ed3b6d7f86c5ac42cd9970a28bf2e6233f3235233aa8d8'
+default['rds_acs']['oracle_download_url'] = '/oracle/oracle_19.zip?name='
+default['rds_acs']['oracle_home'] = '/u01/app/oracle/product/19.0.0/dbhome_1'

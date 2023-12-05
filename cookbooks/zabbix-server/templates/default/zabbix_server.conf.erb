@@ -1,0 +1,11 @@
+LogFile=<%= node['zabbix-server']['log_dir'] %>/zabbix_server.log
+PidFile=<%= node['zabbix-server']['run_dir'] %>/zabbix_server.pid
+DBHost=<%= node['zabbix-server']['mysql']['dbhost'] %>
+DBPort=<%= node['zabbix-server']['mysql']['dbport'] %>
+DBName=<%= node['zabbix-server']['mysql']['dbname'] %>
+DBUser=<%= node['zabbix-server']['mysql']['dbuser'] %>
+DBPassword=<%= node['metadata']['zabbix_server']['db_user_password'] %>
+AlertScriptsPath=<%= node['zabbix-server']['alert_dir'] %>
+Include=<%= node['zabbix-server']['include_dir'] %>
+FpingLocation=/usr/bin/fping
+Fping6Location=/usr/bin/fping6

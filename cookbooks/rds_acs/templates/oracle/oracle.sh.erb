@@ -1,0 +1,4 @@
+export ORACLE_HOME=<%= node['rds_acs']['oracle_home'] %>
+export ORACLE_SID=<%= node.run_state['db_name'] %>
+export SERVICE_NAME=<%= node.run_state['db_name'] %>.<%= node['fqdn'] %>
+export PATH=$PATH:$HOME/bin:$ORACLE_HOME/bin
